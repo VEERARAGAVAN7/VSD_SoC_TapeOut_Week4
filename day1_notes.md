@@ -50,7 +50,7 @@ Its operation depends on the gate-to-source voltage (V<sub>GS</sub>) and drain-t
 | Source | S | Current enters the transistor |
 | Body | B | Connected to substrate or ground |
 
-![Alt Text](Images/nmos_structure.png)
+![NMOS](Screenshots/nmos_structure.png)
 
 ---
 
@@ -92,7 +92,6 @@ In this region (**V<sub>GS</sub> > V<sub>t</sub>**, small **V<sub>DS</sub>**):
 - The transistor acts like a **voltage-controlled resistor**.
 - Current (I<sub>D</sub>) increases linearly with V<sub>DS</sub>.
 
-![Alt Text](Images/resistive_region.png)
 
 Mathematically:
 > I<sub>D</sub> = μ<sub>n</sub> C<sub>ox</sub> (W/L) [(V<sub>GS</sub> - V<sub>t</sub>)V<sub>DS</sub> - (V<sub>DS</sub>² / 2)]
@@ -133,7 +132,7 @@ This relation remains valid until **V<sub>DS</sub> = V<sub>GS</sub> - V<sub>t</s
 SPICE simulations confirm linear behavior of I<sub>D</sub> with V<sub>DS</sub> for small drain voltages.  
 By sweeping **V<sub>DS</sub>** for various **V<sub>GS</sub>**, we obtain **I<sub>D</sub>-V<sub>DS</sub>** curves as shown below:
 
-![Alt Text](Images/id_vds_linear.png)
+![Resistive_Operation](Screenshots/resistive_operation.png)
 
 This verifies the theoretical linear model of NMOS in resistive operation.
 
@@ -144,7 +143,7 @@ This verifies the theoretical linear model of NMOS in resistive operation.
 When **V<sub>DS</sub> ≥ V<sub>GS</sub> - V<sub>t</sub>**, the channel near the drain is depleted — known as **pinch-off**.  
 Beyond this point, the drain current becomes **independent of V<sub>DS</sub>**, entering **saturation**.
 
-![Alt Text](Images/pinch_off.png)
+![Pinch_off](Screenshots/pinchoff.png)
 
 ---
 
@@ -176,3 +175,57 @@ A basic SPICE setup includes:
 
 Example netlist structure:
 
+```
+spice
+
+M1 vdd n1 0 0 nmos W=5u L=2u
+Vdd vdd 0 1.8
+Vin n1 0 1.8
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2
+.end
+```
+
+---
+
+### `Circuit Description in SPICE Syntax`
+
+| SPICE Line | Description |
+|-------------|--------------|
+| `M1 vdd n1 0 0 nmos W=5u L=2u` | NMOS transistor (Drain, Gate, Source, Bulk) |
+| `Vdd vdd 0 1.8` | Drain voltage source |
+| `Vin n1 0 1.8` | Gate voltage source |
+| `.lib` | Includes process technology model |
+| `.dc` | Performs DC sweep for V<sub>DS</sub> and V<sub>GS</sub> |
+
+---
+
+### `Define Technology Parameters`
+
+In SPICE, **technology model files** define device behavior (mobility, oxide thickness, Vt, etc.).  
+For example, the SkyWater **sky130** process uses: .lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+
+This line includes the transistor model at **typical process corner (tt)** for accurate simulation.
+
+---
+
+### `First SPICE Simulation (LAB)`
+
+To run the simulation:
+
+```bash
+ngspice nmos_idvds.spice
+plot -vdd#branch
+```
+This generates Id vs Vds curves for multiple Vgs values.
+
+![Ngpice](Screenshots/spice_wf.png)
+
+
+### ✅ Conclusion:
+The SPICE simulation validates NMOS theoretical operation:
+
+- Linear increase of I<sub>D</sub> with V<sub>DS</sub> in resistive region.
+- Saturation current stabilization after pinch-off.
