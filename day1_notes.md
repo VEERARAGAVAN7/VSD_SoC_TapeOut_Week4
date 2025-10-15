@@ -50,7 +50,7 @@ Its operation depends on the gate-to-source voltage (V<sub>GS</sub>) and drain-t
 | Source | S | Current enters the transistor |
 | Body | B | Connected to substrate or ground |
 
-![NMOS](Screenshots/nmos_structure.png)
+![NMOS](Screenshots/NMOS.png)
 
 ---
 
