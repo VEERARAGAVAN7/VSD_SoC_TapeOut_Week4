@@ -73,7 +73,7 @@ Applying a **positive body-to-source voltage (V<sub>SB</sub>)** increases the **
 The threshold voltage under substrate bias is:
 
 <p align="center">
-  <img src="Images/body_effect_eq.png" width="400">
+  <img src="Screenshots/body_effect_eq.png" width="400">
 </p>
 
 Where:
@@ -120,7 +120,7 @@ This represents **linear region conduction**, where current rises proportionally
 From drift current equations, the drain current (I<sub>D</sub>) in the **linear region** is derived as:
 
 <p align="center">
-  <img src="Images/linear_model_eq.png" width="400">
+  <img src="Screenshots/linear_model_eq.png" width="400">
 </p>
 
 This relation remains valid until **V<sub>DS</sub> = V<sub>GS</sub> - V<sub>t</sub>** (the pinch-off point).
@@ -152,7 +152,7 @@ Beyond this point, the drain current becomes **independent of V<sub>DS</sub>**, 
 At pinch-off, the drain current saturates and follows the quadratic model:
 
 <p align="center">
-  <img src="Images/saturation_model_eq.png" width="400">
+  <img src="Screenshots/saturation_model_eq.png" width="400">
 </p>
 
 > I<sub>D</sub> = (1/2) μ<sub>n</sub> C<sub>ox</sub> (W/L) (V<sub>GS</sub> - V<sub>t</sub>)²
