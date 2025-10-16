@@ -138,6 +138,8 @@ setplot dc1
 .endc
 .end
 ```
+#### Plotting in ngspice:
+
 ![Id_vs_vds](Screenshots/vds_ng.png)
 
 <summary><strong>day2_nfet_idvgs_L015_W039.spice</strong></summary>
@@ -168,5 +170,75 @@ setplot dc1
 .endc
 .end
 ```
+#### Plotting in ngspice:
+
 ![Id_vs_Vgs](Screenshots/vgs_ng.png)
+
+
+## CMOS Voltage Transfer Characteristic (VTC)
+
+### MOSFET as a Switch
+
+- **OFF State:**  
+  MOSFET behaves as an **open switch** when |Vgs| < |Vth|
+
+- **ON State:**  
+  MOSFET behaves as a **closed switch** when |Vgs| > |Vth|
+
+![MOS_Swtich](Screenshots/MOS_switch.png)
+
+---
+
+### Introduction to Standard MOS Voltage-Current Parameters
+
+- **Vth:** Threshold voltage  
+- **Idss:** Saturation drain current  
+- **Vdsat:** Saturation voltage  
+- **Kn:** Transconductance parameter  
+
+![MOS_Parameters](Screenshots/parameters.png)
+
+---
+
+### PMOS/NMOS Drain Current vs Drain Voltage
+
+- **NMOS:** Id increases linearly with Vds, then saturates.  
+- **PMOS:** Similar behavior with inverted polarity.  
+
+![MOS_curves](Screenshots/MOS_curves.png)
+
+---
+
+### Convert PMOS Gate-Source Voltage to Vin
+
+- Map PMOS gate-source voltage (VgsP) to equivalent input voltage (Vin) to simplify calculations.  
+
+![PMOS_convert](Screenshots/PMOS_convert.png)
+
+---
+
+### Convert PMOS and NMOS Drain-Source Voltage to Vout
+
+- Convert all internal drain-source voltages to output voltage (Vout).  
+
+![PMOS_to_vout](Screenshots/PMOS_to_vout.png)
+![NMOS_to_vout](Screenshots/NMOS_to_vout.png)
+---
+
+### Merge PMOS-NMOS Load Curves and Plot VTC
+
+- Combine PMOS and NMOS Id-V curves to find Vout vs Vin.  
+- Sweep Vin from 0 → Vdd and map corresponding Vout to plot the **Voltage Transfer Characteristic**.
+
+![merge_curve](Screenshots/merge_curve.png)
+
+
+## Conclusion
+
+In this study, we analyzed the behavior of **NMOS and PMOS devices** at lower technology nodes, focusing on **velocity saturation effects** and CMOS inverter operation.  
+
+- **Velocity Saturation:** Short-channel devices exhibit velocity saturation at high electric fields, limiting the drain current and affecting switching speed.  
+- **Drain Current Behavior:** Long-channel devices show quadratic Id-Vgs dependence, whereas short-channel devices transition from quadratic to linear due to velocity saturation.  
+- **CMOS Inverter VTC:** By modeling MOSFETs as switches and plotting PMOS/NMOS load curves, the **Voltage Transfer Characteristic (VTC)** demonstrates sharp transitions, low static power, and clear ON/OFF behavior.  
+- **Design Implications:** Understanding these characteristics is crucial for **modern CMOS design**, optimizing speed, power, and reliability in nanoscale circuits.  
 
