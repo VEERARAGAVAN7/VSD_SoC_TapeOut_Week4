@@ -106,7 +106,7 @@ In long-channel devices, carriers accelerate freely, giving higher Id.
 
 ### Lab: Id vs Vgs
 
-<details> <summary><strong>day2_nfet_idvds_L015_W039.spice</strong></summary>
+<summary><strong>day2_nfet_idvds_L015_W039.spice</strong></summary>
 
 The plot of Ids vs Vds over constant Vgs:
 
