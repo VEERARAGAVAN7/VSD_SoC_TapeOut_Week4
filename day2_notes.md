@@ -27,7 +27,7 @@
 
 The output characteristics of an NMOS device with W=1.8μm, L=1.2μm (W/L = 1.5) are shown below:
 
-![Alt Text](Images/1.png)
+![Lowernode_spice](Screenshots/spice_ln.png)
 
 **Linear Region:**  
 - Drain current (Id) is proportional to Vds when Vds < (Vgs - Vt).  
@@ -41,7 +41,7 @@ The output characteristics of an NMOS device with W=1.8μm, L=1.2μm (W/L = 1.5)
 
 The plot below compares long-channel and short-channel NMOS devices with the same W/L ratio:
 
-![Alt Text](Images/2.png)
+![LongShortChannels](Screenshots/channels.png)
 
 - **Long Channel Device:** W = 1.8μm, L = 1.2μm  
 - **Short Channel Device:** W = 0.375μm, L = 0.25μm  
@@ -50,9 +50,7 @@ The plot below compares long-channel and short-channel NMOS devices with the sam
 > - Long-channel Id ∝ Vgs² (ideal quadratic)  
 > - Short-channel Id shows quadratic at low Vgs but becomes linear at higher Vgs due to **velocity saturation**.
 
-![Alt Text](Images/3.png)  
-![Alt Text](Images/4.png)
-
+![VelocitySaturation](Sreenshots/VS_LS.png)  
 ---
 
 ### Velocity Saturation at Lower and Higher Electric Fields
@@ -60,15 +58,15 @@ The plot below compares long-channel and short-channel NMOS devices with the sam
 - **Low Electric Fields:** Carrier velocity increases linearly with the field.  
 - **High Electric Fields:** Carrier velocity saturates → Id flattens.  
 
-![Alt Text](Images/5.png)  
-![Alt Text](Images/6.png)
+![LowerFields](Screenshots/lowerfields.png)  
+![HigherFields](Screenshots/higherfields.png)
 
 **Mode Summary:**
 
 - **Long Channel (>250nm):** Cutoff → Resistive → Saturation  
 - **Short Channel (<250nm):** Cutoff → Resistive → **Velocity Saturation** → Saturation  
 
-![Alt Text](Images/7.png)
+![Alt Text](Screenshots/regions.png)
 
 ---
 
@@ -84,11 +82,69 @@ Where:
 - \(I_{dsat}\) = Saturation current limited by carrier velocity  
 - \(\lambda\) = Channel length modulation factor  
 
+
+#### Peak Current Comparison — Long Channel vs Short Channel Devices
+
+The figure below compares the **peak drain current (Id)** between a long-channel and short-channel NMOS device:
+
+![Alt Text](Screenshots/peakcurrents.png)
+
+**Left Plot**: W = 1.8μm, L = 1.2μm → **Long-channel device**
+  - Peak current = **410 μA**
+  
+**Right Plot**: W = 0.375μm, L = 0.25μm → **Short-channel device**
+  - Peak current = **210 μA**
+
+Even though **short-channel devices** allow for faster switching and smaller sizes, their **peak drain current (Id)** is lower than long-channel devices.
+
+The reduction in peak current is due to **velocity saturation** — which limits carrier velocity in short-channel devices.
+
+In long-channel devices, carriers accelerate freely, giving higher Id.
+
+
 ---
 
 ### Lab: Id vs Vgs
 
+<details> <summary><strong>day2_nfet_idvds_L015_W039.spice</strong></summary>
+
+The plot of Ids vs Vds over constant Vgs:
+
+```
+spice
+
+*Model Description
+.param temp=27
+
+*Including sky130 library files
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+*Netlist Description
+
+XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=0.39 l=0.15
+
+R1 n1 in 55
+
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*simulation commands
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2
+.control
+run
+display
+setplot dc1
+.endc
+.end
+```
+![Id_vs_vds](Screenshots/vds_ng.png)
+
+</details>
+
 <details> <summary><strong>day2_nfet_idvgs_L015_W039.spice</strong></summary>
+
+The plot of Ids vs Vgs over constant Vds:
 
 ```spice
 *Model Description
@@ -114,3 +170,6 @@ setplot dc1
 .endc
 .end
 ```
+![Id_vs_Vgs](Screenshots/vgs_ng.png)
+
+</details>
