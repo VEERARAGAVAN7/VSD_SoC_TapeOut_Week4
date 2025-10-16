@@ -233,7 +233,7 @@ setplot dc1
 ![merge_curve](Screenshots/merge_curve.png)
 
 
-## Conclusion
+### ✅ Conclusion
 
 In this study, we analyzed the behavior of **NMOS and PMOS devices** at lower technology nodes, focusing on **velocity saturation effects** and CMOS inverter operation.  
 
