@@ -50,7 +50,7 @@ The plot below compares long-channel and short-channel NMOS devices with the sam
 > - Long-channel Id ∝ Vgs² (ideal quadratic)  
 > - Short-channel Id shows quadratic at low Vgs but becomes linear at higher Vgs due to **velocity saturation**.
 
-![VelocitySaturation](Sreenshots/VS_LS.png)  
+![VelocitySaturation](Screenshots/VS_LS.png)  
 ---
 
 ### Velocity Saturation at Lower and Higher Electric Fields
@@ -66,7 +66,7 @@ The plot below compares long-channel and short-channel NMOS devices with the sam
 - **Long Channel (>250nm):** Cutoff → Resistive → Saturation  
 - **Short Channel (<250nm):** Cutoff → Resistive → **Velocity Saturation** → Saturation  
 
-![Alt Text](Screenshots/regions.png)
+![regions](Screenshots/regions.png)
 
 ---
 
@@ -87,7 +87,7 @@ Where:
 
 The figure below compares the **peak drain current (Id)** between a long-channel and short-channel NMOS device:
 
-![Alt Text](Screenshots/peakcurrents.png)
+![peakcurrents](Screenshots/peakcurrents.png)
 
 **Left Plot**: W = 1.8μm, L = 1.2μm → **Long-channel device**
   - Peak current = **410 μA**
@@ -140,9 +140,7 @@ setplot dc1
 ```
 ![Id_vs_vds](Screenshots/vds_ng.png)
 
-</details>
-
-<details> <summary><strong>day2_nfet_idvgs_L015_W039.spice</strong></summary>
+<summary><strong>day2_nfet_idvgs_L015_W039.spice</strong></summary>
 
 The plot of Ids vs Vgs over constant Vds:
 
@@ -172,4 +170,3 @@ setplot dc1
 ```
 ![Id_vs_Vgs](Screenshots/vgs_ng.png)
 
-</details>
