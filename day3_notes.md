@@ -31,7 +31,7 @@ This section demonstrates how to construct a **SPICE deck** for a CMOS inverter 
 
 This setup forms the foundation for accurate **CMOS inverter simulations**.
 
-![Alt Text](Images/1.png)
+![SPICE DECK](Screenshots/spicedeck.png)
 
 ---
 
@@ -47,7 +47,7 @@ Simulation parameters include:
 - `Cload = 50 fF`
 - Transistor dimensions: `Wp = 0.84 µm`, `Wn = 0.36 µm`, `L = 0.15 µm`
 
-![Alt Text](Images/2.png)
+![Alt Text](Screenshots/spicedeckcode.png)
 
 ---
 
@@ -55,9 +55,7 @@ Simulation parameters include:
 
 <summary><strong>day4_inv_vtc_Wp084_Wn036.spice</strong></summary>
 
-```
-spice
-
+```spice
 *Model Description
 .param temp=27
 
@@ -99,7 +97,6 @@ The resulting plot represents the Voltage Transfer Characteristic (VTC) of the C
 <summary><strong>day4_inv_tran_Wp084_Wn036.spice</strong></summary>
 
 ```spice
-
 *Model Description
 .param temp=27
 
@@ -149,9 +146,9 @@ This transient simulation provides rise and fall delay information of the CMOS i
 
 - At the switching threshold, current balance condition holds:
 
-![Static_behavior](Screenshots/static_behavior.png)
-![Static_behavior](Screenshots/static_behavior.png)
-![Static_behavior](Screenshots/static_behavior.png)
+![Static_behavior](Screenshots/Vm1.png)
+![Static_behavior](Screenshots/Vm2.png)
+![Static_behavior](Screenshots/Vm3.png)
 
 This expression relates Vm to device parameters and mobility ratios.
 
@@ -159,8 +156,11 @@ This expression relates Vm to device parameters and mobility ratios.
 
 - From the same condition, the required sizing ratio can be derived:
 
-![Static_behavior](Screenshots/static_behavior.png)
-![Static_behavior](Screenshots/static_behavior.png)
+![Static_behavior](Screenshots/WL1.png)
+![Static_behavior](Screenshots/WL2.png)
+![Static_behavior](Screenshots/WL3.png)
+![Static_behavior](Screenshots/WL4.png)
+![Static_behavior](Screenshots/WL5.png)
 
 This equation helps determine the optimal PMOS/NMOS width ratio for a desired Vm.
 
@@ -170,8 +170,6 @@ By running both .dc (static) and .tran (dynamic) simulations:
 - Static analysis shows VTC and switching threshold.
 - Dynamic analysis provides rise/fall times, propagation delays, and signal integrity data.
 
-![Static_behavior](Screenshots/static_behavior.png)
-
 ### Static and Dynamic Simulation with Increased PMOS Width
 
 When PMOS width is increased:
@@ -179,16 +177,16 @@ When PMOS width is increased:
 - Switching threshold (Vm) shifts toward higher voltage.
 - Achieves balanced rise/fall delays improving clock signal symmetry.
 
-![Static_behavior](Screenshots/static_behavior.png)
+![Static_behavior](Screenshots/risefalldelay.png)
 
 ### Application of CMOS Inverter in Clock Network and STA:
 - Inverters are widely used as clock buffers in digital ICs.
 - Balanced rise and fall delays ensure duty cycle accuracy and timing closure in Static Timing Analysis (STA).
 - Mismatch in PMOS/NMOS drive strengths can cause duty cycle distortion, which can be corrected through buffer sizing and STA optimization.
 
-![Static_behavior](Screenshots/static_behavior.png)
+![CLK_NTW](Screenshots/clkntw.png)
 
-### Conclusion
+### ✅ Conclusion
 
 Through detailed SPICE simulations and theoretical analysis:
 - Switching Threshold Voltage (Vm) defines inverter stability and noise margins.
