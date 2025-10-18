@@ -212,3 +212,17 @@ Below image is the output waveform for device variation:
 As the PMOS width is larger than the NMOS width, the PMOS provides a stronger pull-up path — keeping the output high for longer durations, demonstrating device strength asymmetry in inverter response.
 
 
+## ✅ Conclusion
+
+In **Day 5**, the behavior of a CMOS inverter under **power supply and device variations** was analyzed using **Smart SPICE simulations** on the Sky130 PDK.
+
+Key observations include:
+
+- **Power Supply Variation:**  
+  Reducing the supply voltage (`Vdd`) improves power efficiency but reduces the noise margin and drive strength. The **Voltage Transfer Characteristic (VTC)** becomes narrower at lower `Vdd`, indicating reduced switching robustness.
+- **Device Variation:**  
+  Variations in **etching** and **oxide thickness (Tox)** lead to mismatches in transistor dimensions and threshold voltages. These physical deviations cause significant shifts in **Id–Vds**, **Vth**, and **Vm**, impacting inverter stability and delay.
+- **PMOS/NMOS Strength Mismatch:**  
+  When **PMOS width > NMOS width**, the output stays high longer due to a stronger pull-up. Conversely, when **NMOS width > PMOS width**, the output transitions faster during pull-down.
+**Overall Conclusion:**  
+Maintaining CMOS inverter robustness requires a balanced trade-off between **power supply scaling** and **process variation tolerance**. Proper transistor sizing, accurate modeling of short-channel effects, and voltage-aware simulation are essential for reliable operation in modern low-power designs.
