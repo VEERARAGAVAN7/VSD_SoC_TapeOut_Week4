@@ -1,6 +1,8 @@
-# Basics of NMOS Drain Current (Id) vs Drain-to-Source Voltage (Vds)
+# VSD Hardware Design Program
 
-## CMOS Circuit Design and SPICE Simulations
+## Basics of NMOS Drain Current (Id) vs Drain-to-Source Voltage (Vds)
+
+### CMOS Circuit Design and SPICE Simulations
 
 ### 📚 Contents
 
