@@ -94,6 +94,8 @@ By changing the **PMOS width (Wp)** while keeping the NMOS width (Wn) constant:
 ### `Sky130 Noise Margin Labs`
 
 <summary><strong>day4_inv_noisemargin_wp1_wn036.spice</strong></summary>
+
+
 ```
 *Model Description
 .param temp=27
@@ -124,7 +126,7 @@ display
 .end
 ```
 
-📈 **Run the Simulation in ngspice**
+#### 📈 **Run the Simulation in ngspice**
 
 ```shell
 ngspice day4_inv_noisemargin_wp1_wn036.spice
